@@ -1,0 +1,3 @@
+[submodule "SOLMATE"]
+	path = SOLMATE
+	url = https://github.com/kumawatkaran523/SOLMATE.git

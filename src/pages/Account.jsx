@@ -1,8 +1,10 @@
+import { Button } from '@/components/ui/button';
 import { useWallet } from '@solana/wallet-adapter-react';
 import { Connection } from '@solana/web3.js';
 import React, { useEffect, useState } from 'react'
 import toast, { Toaster } from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom'
+// import { getAssociatedTokenAddress, TOKEN_PROGRAM_ID } from '@solana/spl-token';
 
 function Account() {
   const navigate=useNavigate();
@@ -21,7 +23,27 @@ function Account() {
     fetchBalance();
   }, [publicKey, connection, wallet.publicKey]);
   
+  // const handleClick=async()=>{
+  //   try {
+  //     // Get all parsed token accounts associated with the wallet
+  //     const response = await connection.getParsedTokenAccountsByOwner(wallet.publicKey, {
+  //         programId: TOKEN_PROGRAM_ID, // Only fetch token accounts
+  //     });
 
+  //     // Log out the associated token accounts
+  //     console.log("Token Accounts Associated with Wallet:");
+  //     response.value.forEach((account) => {
+  //         const tokenAddress = account.pubkey.toBase58();
+  //         const tokenData = account.account.data.parsed.info;
+  //         console.log(`Token Address: ${tokenAddress}`);
+  //         console.log(`Amount: ${tokenData.tokenAmount.uiAmount}`);
+  //         console.log(`Mint Address: ${tokenData.mint}`);
+  //         console.log('---');
+  //     });
+  // } catch (error) {
+  //     console.error('Error fetching token accounts:', error);
+  // }
+  // }
   return (
     <div className=' border border-gray-600 mt-20 w-[50%] mx-auto py-4 rounded-[14px]'>
       <div className='flex justify-center items-center gap-3'>
@@ -47,7 +69,9 @@ function Account() {
         </div>
       </div>
       <img src="image.png" alt="" width={600}/>
+      {/* <Button onClick={handleClick}>Click</Button> */}
       <Toaster position='top-right'/>
+
     </div>
   )
 }
